@@ -1,18 +1,19 @@
-%
-% 1 - Check if version requirements
-% are satisfied and the packages are
-% are installed/loaded:
-%   Octave > 4
-%       - image
-%       - optim
-%       - struct
-%       - statistics
-%
-%   MATLAB >= R2015b
-%
-% 2 - Add project to the O/M path
+% (C) Copyright 2020 Agah Karakuzu
+% (C) Copyright 2019 CPP BIDS SPM-pipeline developpers
 
 function initEnv
+    % 1 - Check if version requirements
+    % are satisfied and the packages are
+    % are installed/loaded:
+    %   Octave > 4
+    %       - image
+    %       - optim
+    %       - struct
+    %       - statistics
+    %
+    %   MATLAB >= R2015b
+    %
+    % 2 - Add project to the O/M path
 
     octaveVersion = '4.0.3';
     matlabVersion = '8.6.0';
@@ -99,10 +100,8 @@ end
 function addDependencies()
 
     pth = fileparts(mfilename('fullpath'));
-    addpath(fullfile(pth, 'lib', 'CPP_BIDS'));
+    addpath(genpath(fullfile(pth, 'lib', 'CPP_BIDS', 'src')));
     addpath(genpath(fullfile(pth, 'lib', 'CPP_PTB', 'src')));
-    addpath(fullfile(pth, 'subfun'));
-
-    checkCppBidsDependencies();
+    addpath(genpath(fullfile(pth, 'subfun')));
 
 end
