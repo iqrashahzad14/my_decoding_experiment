@@ -8,7 +8,7 @@ function varargout = preTrialSetup(varargin)
     [cfg, iBlock, iEvent] = deal(varargin{:});
 
     % set direction, speed of that event and if it is a target
-%     thisEvent.modality_type = cfg.design.modalityOrder{iBlock};
+    thisEvent.modality_type = cfg.design.modalityOrder{iBlock};
     thisEvent.trial_type = cfg.design.blockNames{iBlock};
     thisEvent.direction = cfg.design.directions(iBlock, iEvent);
     thisEvent.speedPix = cfg.design.speeds(iBlock, iEvent);
