@@ -69,5 +69,5 @@ function cfg = setDirections(cfg)
         end
     end
     cfg.design.directions = directions;
-    cfg.design.directions = directions(cfg.design.blockOrder, :);
+%     cfg.design.directions = directions(cfg.design.blockOrder, :);
 end

@@ -6,3 +6,5 @@
 # exclude content of logfiles folders
 *.tsv
 *.mat
+
+output/source/sub-099/ses-009/func/sub-099_ses-009_task-mainExperiment_run-009_events_date-202111261631.json

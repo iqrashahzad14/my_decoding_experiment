@@ -58,7 +58,7 @@ function [cfg] = setParameters()
     cfg.design.motionDirectionsVertical = [90 270];
     cfg.design.names = {'horizontal';'vertical'};
     cfg.design.nbRepetitions = 4;
-    cfg.design.nbEventsPerBlock = 16; % DO NOT CHANGE
+    cfg.design.nbEventsPerBlock = 20; % DO NOT CHANGE
     
     cfg.design.blockOrder = randperm(cfg.design.nbRepetitions*2);
     

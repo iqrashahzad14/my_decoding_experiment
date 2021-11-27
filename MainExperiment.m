@@ -2,7 +2,7 @@
 % (C) Copyright 2020 CPP visual motion localizer developpers
 
 %% Main Decoding Experiment
-%3 minutes 49.8644 seconds; 3 minutes 43.8125 seconds
+
 
 getOnlyPress = 1;
 

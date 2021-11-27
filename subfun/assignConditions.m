@@ -5,7 +5,7 @@ function [conditionNamesVector, CONDITON1_INDEX, CONDITON2_INDEX] = assignCondit
     [~, nbRepet] = getDesignInput(cfg);
 
     conditionNamesVector = repmat(cfg.design.names, nbRepet, 1);
-%     conditionNamesVector = {'horizontal';'vertical';'horizontal'; 'horizontal';'horizontal';'vertical';'vertical';'vertical'};
+    conditionNamesVector = conditionNamesVector(cfg.design.blockOrder);
 
     % Get the index of each condition
     nameCondition1 = 'horizontal';
