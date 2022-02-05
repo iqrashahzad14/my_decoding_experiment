@@ -71,9 +71,18 @@ function [cfg] = expDesign(cfg, displayFigs)
         error('number of repetitions must be a multiple of max number of targets');
     end
 
-    RANGE_TARGETS = 1:MAX_TARGET_PER_BLOCK;
-    targetPerCondition = repmat(RANGE_TARGETS, 1, NB_REPETITIONS / MAX_TARGET_PER_BLOCK);
-
+%     RANGE_TARGETS = 0:MAX_TARGET_PER_BLOCK; % 1:MAX_TARGET_PER_BLOCK;
+    xRandTarget=randi([1,2]);
+    if xRandTarget==1
+      RANGE_TARGETS=[0,1];
+%     elseif xRandTarget==2
+%       RANGE_TARGETS=[1,2];
+    elseif xRandTarget==2
+        RANGE_TARGETS =[0,2];
+    end
+   
+    targetPerCondition = repmat(RANGE_TARGETS, 1, NB_REPETITIONS / length(RANGE_TARGETS));%MAX_TARGET_PER_BLOCK);
+    
     numTargetsForEachBlock = zeros(1, NB_BLOCKS);
     numTargetsForEachBlock(CONDITON1_INDEX) = shuffle(targetPerCondition);
     numTargetsForEachBlock(CONDITON2_INDEX) = shuffle(targetPerCondition);
@@ -96,7 +105,7 @@ function [cfg] = expDesign(cfg, displayFigs)
             chosenPosition = setTargetPositionInSequence( ...
                                                          NB_EVENTS_PER_BLOCK/2, ...
                                                          nbTarget, ...
-                                                         [1 NB_EVENTS_PER_BLOCK/2]);
+                                                         [1 NB_EVENTS_PER_BLOCK/2]);%[1 NB_EVENTS_PER_BLOCK/2]
 
             fixationTargets(iBlock, chosenPosition) = 1;
 

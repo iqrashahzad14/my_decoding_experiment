@@ -57,14 +57,15 @@ function [cfg] = setParameters()
     cfg.design.motionDirectionsHorizontal = [180 0];%auditory cue says right for 180 but it is left for participantsts, visual stim is left for 180
     cfg.design.motionDirectionsVertical = [90 270];
     cfg.design.names = {'horizontal';'vertical'};
-    cfg.design.nbRepetitions = 4;
-    cfg.design.nbEventsPerBlock = 20; % DO NOT CHANGE
+    cfg.design.nbRepetitions = 4;% X2 = number of blocks
+    cfg.design.nbEventsPerBlock = 14; % number of events 
     
-    cfg.design.blockOrder = randperm(cfg.design.nbRepetitions*2);
+    %Randomising in chunks/ runs so that easy to separate
+    cfg.design.blockOrder = [shuffle(1:cfg.design.nbRepetitions), shuffle(1:cfg.design.nbRepetitions)];%[randperm(cfg.design.nbRepetitions), randperm(cfg.design.nbRepetitions)];
     
     cfg.design.modalityOrder={};
     for icell=1:length(cfg.design.blockOrder)
-        if cfg.design.blockOrder(icell)<=cfg.design.nbRepetitions
+        if cfg.design.blockOrder(icell)<=cfg.design.nbRepetitions/2 %if block order number is <2, then do visual blocks
             cfg.design.modalityOrder(icell) ={'visual'};
         else
             cfg.design.modalityOrder(icell)={'tactile'};
@@ -139,7 +140,7 @@ function [cfg] = setParameters()
 
     %% Task(s)
 
-    cfg.task.name = 'main Experiment';
+    cfg.task.name = 'main Experiment1';
 
     % Instruction
     cfg.task.instruction = 'Detect the repetition\n \n\n';
