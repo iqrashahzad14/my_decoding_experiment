@@ -215,7 +215,8 @@ try
     % remove the sound data from the cfg before saving it.
     cfg = rmfield(cfg, 'soundData');
 
-    createJson(cfg, cfg);
+%     createJson(cfg, cfg);
+    createJson(cfg, 'func');
 
     farewellScreen(cfg);
 

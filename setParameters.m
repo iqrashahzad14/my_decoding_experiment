@@ -82,7 +82,7 @@ function [cfg] = setParameters()
     % IBI
     % block length = (cfg.eventDuration + cfg.ISI) * cfg.design.nbEventsPerBlock
 
-    cfg.timing.eventDuration = 0.5; % second -for visualstim it becomes 1s 
+    cfg.timing.eventDuration = 0.5; % second -for visual stim it becomes 1s 
 
     % Time between blocs in secs
     cfg.timing.IBI = [5.7800    5.3419    6.8000    6.5483    5.4044    5.4333    5.7721    0];%5;
@@ -90,7 +90,16 @@ function [cfg] = setParameters()
     cfg.timing.ISI.vis = 0.5;
     cfg.timing.ISI.tac = 2;
     % Number of seconds before the motion stimuli are presented
-    cfg.timing.onsetDelay = 5.25;
+%     cfg.timing.onsetDelay = 5.25;
+    
+    % Number of seconds before the motion stimuli are presented: different
+    % for visual and tactile blocks
+    if strcmp(cfg.design.modalityOrder(1),'visual')==1
+        cfg.timing.onsetDelay = 5.25;
+    elseif strcmp(cfg.design.modalityOrder(1),'tactile')==1
+        cfg.timing.onsetDelay = 4.75;%5.25; - 0.5 from the auditory cue script to compensate for tactile stimulation, this keeps 5.25s for tactile localizer
+    end
+    
     % Number of seconds after the end all the stimuli before ending the run
     cfg.timing.endDelay = 14;
 
@@ -140,10 +149,10 @@ function [cfg] = setParameters()
 
     %% Task(s)
 
-    cfg.task.name = 'main Experiment1';
+    cfg.task.name = 'main Experiment2';
 
     % Instruction
-    cfg.task.instruction = 'Detect the repetition\n \n\n';
+    cfg.task.instruction = 'Detect the repeated direction\n \n\n';
 
     % Fixation cross (in pixels)
     cfg.fixation.type = 'cross';
@@ -196,7 +205,7 @@ function cfg = setMRI(cfg)
 
     cfg.mri.repetitionTime = 1.75;
 
-    cfg.bids.MRI.Instructions = 'Detect the repetition';
+    cfg.bids.MRI.Instructions = 'Detect the repeated direction';
     cfg.bids.MRI.TaskDescription = [];
     cfg.bids.mri.SliceTiming = [0, 0.9051, 0.0603, 0.9655, 0.1206, 1.0258, 0.181, ...
                               1.0862, 0.2413, 1.1465, 0.3017, 1.2069, 0.362, ...
